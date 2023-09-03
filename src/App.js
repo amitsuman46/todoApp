@@ -1,11 +1,16 @@
-
+import Navbar from './Components/Navbar'
 import './App.css';
-
+import {MainDIV} from './Common/CommonComponents';
+import Heading from './Components/Heading';
 function App() {
   return (
-    <div className="App">
-      <h2>Developers</h2>
-    </div>
+    <>
+    <MainDIV>
+         <Navbar userName="John Doe" />
+         <Heading/>
+    </MainDIV>
+   
+    </>
   );
 }
 
