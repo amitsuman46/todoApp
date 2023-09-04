@@ -6,11 +6,8 @@ color: white;
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding: 0.6rem;
-padding-top: 0.3 rem;
-padding-bottom: 0.3 rem;
-border-radius: 12px;
-
+padding: 0;
+border-radius: 0 0 12px 12px;
 `;
 
 export const UserCircle = styled.div`
@@ -24,6 +21,7 @@ export const UserCircle = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
   color: #952323;
+  margin-left:10px
 `;
 
 
@@ -44,10 +42,23 @@ export const UserProfile = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
   color: #952323;
+  margin-right:10px;
 `;
 
 export const MainDIV = styled.div`
     background-color: #F5EBEB;
     color: #952323;
     height: 100vh;
+`;
+
+export const TaskContainer = styled.div`
+background-color: #EEE5E5;
+height: 75%;
+width: 85%;
+box-shadow: 0px 0px 5px 5px gray;
+border-radius:12px;
+margin:auto;
+margin-top:25px;
+display:flex;
+overflow:hidden;
 `;
