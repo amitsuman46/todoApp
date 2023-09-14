@@ -4,6 +4,7 @@ import {MainDIV, TaskContainer} from './Common/CommonComponents';
 import Heading from './Components/Heading';
 import BasicDateCalendar from './Components/Calendar';
 import AddTasks from './Components/AddTasks';
+import DisplayTask from './Components/DisplayTask';
 function App() {
   return (
     <>
@@ -19,8 +20,8 @@ function App() {
               <AddTasks/>
             </div>
           </div>
-          <div className={"right"} style={{width:'50%',height:'100%',background:'purple'}}>
-
+          <div className={"right"} style={{width:'50%',height:'100%'}}>
+            <DisplayTask/>
           </div>
          </TaskContainer>
     </MainDIV>

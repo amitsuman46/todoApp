@@ -11,7 +11,8 @@ const AddTasks = () => {
             <textarea placeholder='Add Task Title' 
             style={{width:'100%',textAlign:'center',fontSize:'24px',color:'#D9D9D9',opacity:'1',background:'rgba(0,0,0,0)',margin:'auto',border:'none',height:'100%',outline:'none',overflow:'wrap'}}/>
             </TaskContainer>
-            <textarea placeholder='Add Task Detail' style={{textAlign:'center',fontSize:'16px',padding:'0px 5px 0px 5px',color:'#D9D9D9',opacity:'1',background:'rgba(0,0,0,0)',marginTop:'20px',border:'none',height:'50%',outline:'none',overflow:'wrap'}}/>
+            <textarea placeholder='Add Task Detail' style={{color:'#F5EBEB',textAlign:'center',
+            fontSize:'16px',padding:'0px 5px 0px 5px',opacity:'1',background:'rgba(0,0,0,0)',marginTop:'20px',border:'none',height:'50%',outline:'none',overflow:'wrap'}}/>
         </TaskContainer>
         <Fab sx={{background:'#952323',margin:'auto','&:hover': {
           backgroundColor: '#D9D9D9', // Custom hover color for Fab

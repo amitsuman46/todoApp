@@ -62,3 +62,27 @@ margin-top:25px;
 display:flex;
 overflow:hidden;
 `;
+
+export const Displaytask = styled.div`
+background-color: #952323;
+height: 90%;
+width: 90%;
+box-shadow: 0px 0px 5px 5px gray;
+border-radius:12px;
+margin-top:25px;
+display:flex;
+text-align: center;
+overflow:hidden;
+flex-direction: column;
+align-items: center;
+padding: 0;
+`;
+
+export const TaskItemContainer = styled.div`
+background-color: #EEE5E5;
+height: 10%;
+width: 70%;
+box-shadow: 0px 0px 5px 5px gray;
+border-radius:12px;
+display:flex;
+`;
