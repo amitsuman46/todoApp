@@ -8,7 +8,8 @@ const UserSchema = Schema({
 
     userId:{type:String,requied:true},
     userName :{ type: String },
-    email:{type:String}
+    email:{type:String},
+    password: {type:String}
 })
 
 
