@@ -8,7 +8,9 @@ const { isAuth } = require('./middleware/isAuth');
 app.use(bodyParser.json());
 
 app.use((req,res,next)=>{
-    console.log('App started');
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods','GET,PUT');
+    res.setHeader('Access-Control-Allow-Header','Content-Type,Authorization');
     next();
 })
 
