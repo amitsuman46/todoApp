@@ -4,7 +4,7 @@ import {
   UserCircle,
   H2,
   UserProfile
-} from "../Common/CommonComponents";
+} from "../../Common/CommonComponents";
 
 const Navbar = ({ userName }) => {
   const initials = userName.charAt(0);

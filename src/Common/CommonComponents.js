@@ -64,7 +64,7 @@ overflow:hidden;
 `;
 
 export const Displaytask = styled.div`
-background-color: #952323;
+background-color: #952323; //red
 height: 90%;
 width: 90%;
 box-shadow: 0px 0px 5px 5px gray;

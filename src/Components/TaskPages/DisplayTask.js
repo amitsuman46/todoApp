@@ -1,5 +1,5 @@
 import React from 'react'
-import {Displaytask } from '../Common/CommonComponents';
+import {Displaytask } from '../../Common/CommonComponents';
 import TaskItem from './TaskItem';
 
 const DisplayTask = (props) => {

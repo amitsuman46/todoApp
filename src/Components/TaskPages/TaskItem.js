@@ -1,5 +1,5 @@
 import React from 'react'
-import {TaskContainer } from '../Common/CommonComponents';
+import {TaskContainer } from '../../Common/CommonComponents';
 const TaskItem = () => {
   return (
     <TaskContainer style={{height:'30%',margin:'0',padding:'0',width:'60%',background:'#F5EBEB',flexDirection:'column'}}>
