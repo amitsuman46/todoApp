@@ -1,8 +1,8 @@
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import './App.css';
 import {MainDIV} from './Common/CommonComponents';
 import Login from './Components/Login/Login';
-import SignUp from "./Components/SignUp/SignUp"
+import SignUp from './Components/Signup/SignUp';
 import TaskPages from './Components/TaskPages/TaskPages';
 import { loginUser, signUpUser } from './Services/Services';
 
@@ -17,7 +17,9 @@ function reducerFn(state,action){
   break;
   case "GET_USER": console.log("Get User Details");
   break;
+  case "USER_LOGGED_OUT": return {...state,isLoggedIn:false,tasks:[]};
  }
+
 
 
 }
@@ -25,9 +27,19 @@ function reducerFn(state,action){
 
 
 
+
+
 function App() {
 
+ 
   const [userState,dispatchAction] = useReducer(reducerFn,{isLoggedIn:false,tasks:[]})
+
+  useEffect(()=>{
+    const jwtToken = localStorage.getItem('jwtToken');
+    if(jwtToken){
+      dispatchAction({type:'USER_LOGGED'});
+    }
+  },[])
 
   function login(email,password){
 
@@ -36,6 +48,12 @@ function App() {
     })
     ;
   }
+
+  const logOutHandler = () => {
+    localStorage.removeItem('jwtToken');
+    dispatchAction({type:'USER_LOGGED_OUT'});
+  }
+  
 
   function signUp(userName,email,password){
 
@@ -49,7 +67,7 @@ function App() {
     <>
      {!userState.isLoggedIn?<Login onLogin={login}/>:
    <MainDIV>
-         <TaskPages/>
+         <TaskPages onLogOut={logOutHandler}/>
     </MainDIV> 
      }
       {/* <SignUp onSignUp={signUp}/> */}

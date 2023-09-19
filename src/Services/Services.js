@@ -18,7 +18,6 @@ export const signUpUser = (userName,email,password,callback)=>{
         }
     }).then((response)=>{
         if(response.status === '201'){
-
             callback();
             return response.json().message;
         }
@@ -48,6 +47,11 @@ export const loginUser = (email,password,callback)=>{
         if(response.status == '200'){
 
             callback();
+            response.json().then(
+                (data)=> {
+                    localStorage.setItem('jwtToken',data.token);
+                }
+            )
             return response.message;
         }
 

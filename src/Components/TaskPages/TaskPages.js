@@ -5,10 +5,10 @@ import Heading from './Heading';
 import BasicDateCalendar from './Calendar';
 import AddTasks from './AddTasks';
 import DisplayTask from './DisplayTask';
-const TaskPages = () => {
+const TaskPages = (props) => {
   return (
     <>
-        <Navbar userName="John Doe" />
+        <Navbar userName="John Doe" onLogOut={props.onLogOut} />
          <Heading/>
          <TaskContainer>
           <div className={"left"} style={{width:'50%',height:'100%'}}>
