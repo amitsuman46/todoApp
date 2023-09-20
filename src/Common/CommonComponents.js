@@ -75,7 +75,7 @@ text-align: center;
 overflow:hidden;
 flex-direction: column;
 align-items: center;
-padding: 0;
+padding-bottom: 20px;
 `;
 
 export const TaskItemContainer = styled.div`

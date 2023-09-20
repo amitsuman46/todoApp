@@ -9,7 +9,7 @@ const TaskPages = (props) => {
   return (
     <>
         <Navbar userName="John Doe" onLogOut={props.onLogOut} />
-         <Heading/>
+         <Heading name={"John Doe"}/>
          <TaskContainer>
           <div className={"left"} style={{width:'50%',height:'100%'}}>
             <div className='calendar' style={{width:'100%',height:'57%',padding:"0px",margin:"0px"}}>
@@ -20,7 +20,7 @@ const TaskPages = (props) => {
             </div>
           </div>
           <div className={"right"} style={{width:'50%',height:'100%'}}>
-            <DisplayTask/>
+            <DisplayTask tasks={[{title:'Task 1',detail:'Its a test task'},{title:'Task 1',detail:'Its a test task'},{title:'Task 1',detail:'Its a test task'},{title:'Task 1',detail:'Its a test task'},{title:'Task 1',detail:'Its a test task'}]}/>
           </div>
          </TaskContainer>
     </>
