@@ -63,10 +63,45 @@ export const loginUser = (email,password,callback)=>{
 
 };
 
-export const addTask = ()=>{
-
+export const addTask = (title, detail)=>{
+    fetch("http://localhost:3080/addTask",{
+        method:"POST" ,
+        body:JSON.stringify({
+            title,
+            detail
+        }), headers: {
+            'content-type': 'application/json' ,
+            'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`//always include this incase of post req to backend to avoid empty req body
+        }
+    }).then(
+        (res)=>{
+            if(res.status=='201'){
+                console.log('Data Added Successfully');
+            }
+        }
+    ).catch(
+        (err)=>{console.log(err);}
+    )
 };
 
-export const getTasks = ()=>{
-
+export const getTasks = (callback)=>{
+    fetch("http://localhost:3080/userData",{
+        method:"GET" ,
+         headers: {
+            'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`//always include this incase of post req to backend to avoid empty req body
+        }
+    }).then(
+        (res)=>{
+            if(res.status=='200'){
+                res.json().then(
+                    (data)=>{console.log(data);
+                        callback(data);
+                    }
+                    
+                )
+            }
+        }
+    ).catch(
+        (err)=>{console.log(err);}
+    )
 };

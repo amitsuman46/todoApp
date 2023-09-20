@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import Navbar from './Navbar'
 import {TaskContainer} from '../../Common/CommonComponents'
 import Heading from './Heading';
 import BasicDateCalendar from './Calendar';
 import AddTasks from './AddTasks';
 import DisplayTask from './DisplayTask';
+import { getTasks } from '../../Services/Services';
+
+let count=0;
+export const counter = () => {
+   count++;
+ }
+
 const TaskPages = (props) => {
+
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(()=>{
+     getTasks((data)=>{
+      setTasks(data.tasks);
+      console.log(data.tasks);
+    });
+    
+  },[count]);
+
+
+ 
+
+
   return (
     <>
         <Navbar userName="John Doe" onLogOut={props.onLogOut} />
@@ -20,7 +42,7 @@ const TaskPages = (props) => {
             </div>
           </div>
           <div className={"right"} style={{width:'50%',height:'100%'}}>
-            <DisplayTask tasks={[{title:'Task 1',detail:'Its a test task'},{title:'Task 1',detail:'Its a test task'},{title:'Task 1',detail:'Its a test task'},{title:'Task 1',detail:'Its a test task'},{title:'Task 1',detail:'Its a test task'}]}/>
+            <DisplayTask tasks={tasks}/>
           </div>
          </TaskContainer>
     </>
