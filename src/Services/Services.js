@@ -64,12 +64,13 @@ export const loginUser = (email,password,callback)=>{
 
 };
 
-export const addTask = (title, detail,callback)=>{
+export const addTask = (title, detail,date,callback)=>{
     fetch("http://localhost:3080/addTask",{
         method:"POST" ,
         body:JSON.stringify({
             title,
-            detail
+            detail,
+            date
         }), headers: {
             'content-type': 'application/json' ,//always include this incase of post req to backend to avoid empty req body
             'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
@@ -113,6 +114,31 @@ export const getTasks = (callback)=>{
 
 export const deleteTask = (taskId,callback)=>{
     fetch("http://localhost:3080/deleteTask",{
+        method:"POST" ,
+        body:JSON.stringify({
+            taskId,
+        }), headers: {
+            'content-type': 'application/json' ,
+            'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`//always include this incase of post req to backend to avoid empty req body
+        }
+    }).then(
+        (res)=>{
+            if(res.status=='200'){
+                    res.json()
+                    .then((data)=>{
+                       
+                        callback(data.tasks);
+                    })
+            }
+        }
+    ).catch(
+        (err)=>{console.log(err);}
+    )
+};
+
+
+export const markCompleted = (taskId,callback)=>{
+    fetch("http://localhost:3080/markCompleted",{
         method:"POST" ,
         body:JSON.stringify({
             taskId,

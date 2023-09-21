@@ -13,7 +13,7 @@ const TaskPages = (props) => {
 
   const [tasks, setTasks] = useState([]);
   const [userName,setUserName] = useState("John Doe");
-
+  const [calDate, setCalDate] = useState('');
   useEffect(()=>{
      getTasks((data)=>{
       setTasks(data.tasks);
@@ -23,7 +23,10 @@ const TaskPages = (props) => {
     
   },[]);
 
-
+  const dateChangeHandler = (date) => {
+    console.log(date);
+    setCalDate(date);
+  }
 
   return (
     <>
@@ -32,14 +35,14 @@ const TaskPages = (props) => {
          <TaskContainer>
           <div className={"left"} style={{width:'50%',height:'100%'}}>
             <div className='calendar' style={{width:'100%',height:'57%',padding:"0px",margin:"0px"}}>
-              <BasicDateCalendar/>
+              <BasicDateCalendar onDateChange={dateChangeHandler}/>
             </div>
             <div className='addTask' style={{width:'73%',height:'50%',margin:'auto'}}>
-              <AddTasks addToTasks={(tasks)=>{setTasks(tasks)}}/>
+              <AddTasks addToTasks={(tasks)=>{setTasks(tasks)}} dateProps = {calDate}/>
             </div>
           </div>
           <div className={"right"} style={{width:'50%',height:'100%'}}>
-            <DisplayTask onDeleteTask={(tasks)=>{setTasks(tasks)}} tasks={tasks}/>
+            <DisplayTask onDeleteTask={(tasks)=>{setTasks(tasks)}} tasks={tasks} />
           </div>
          </TaskContainer>
     </>

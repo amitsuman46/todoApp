@@ -12,8 +12,14 @@ const AddTasks = (props) => {
   const addTaskHandler = () => {
     const title = titleRef.current.value;
     const detail = detailRef.current.value;
+    const date = props.dateProps;
 
-    console.log(addTask(title,detail,(receivedTasks)=>{
+    if(!title||!detail||!date){
+      alert('Please fill all the details');
+      return;
+    }
+    // console.log(props.dateProps);
+    console.log(addTask(title,detail,date,(receivedTasks)=>{
 
       props.addToTasks(receivedTasks);
 
