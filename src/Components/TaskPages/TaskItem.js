@@ -2,13 +2,24 @@ import React from 'react'
 import {TaskContainer } from '../../Common/CommonComponents';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddTaskIcon from '@mui/icons-material/AddTask';
+import { deleteTask } from '../../Services/Services';
+
 const TaskItem = (props) => {
+
+  const deleteATask = ()=>{
+
+    deleteTask(props.id,(receivedTasks)=>{
+      props.onDeleteTask(receivedTasks);
+      console.log("Delete successful");
+    })
+  }
+
   return (
-    <TaskContainer style={{minHeight:'30%',margin:'0',padding:'0',width:'60%',background:'#F5EBEB',flexDirection:'column', marginTop:'20px'}}>
+    <TaskContainer style={{minHeight:'30%',height:'30%',margin:'0',padding:'0',width:'60%',background:'#F5EBEB',flexDirection:'column', marginTop:'20px'}}>
             <TaskContainer style={{height:'30%',margin:'0',padding:'0',width:'100%',background:'#F5EBEB',zIndex:'10'}}>
               <div style={{width:'100%',textAlign:'center',fontSize:'16px',color:'#952323',opacity:'1',background:'rgba(0,0,0,0)',marginTop:'8px',border:'none',height:'100%',outline:'none',overflow:'wrap'}}>
             <span style={{fontWeight:'600'}}>{props.task.title}</span>
-            <DeleteIcon sx={{float:'right' , marginRight:'5px' , cursor:'pointer',':hover':{opacity:'0.5'}}}/>
+            <DeleteIcon onClick={deleteATask} sx={{float:'right' , marginRight:'5px' , cursor:'pointer',':hover':{opacity:'0.5'}}}/>
             <AddTaskIcon sx={{float:'right' , marginRight:'5px' , cursor:'pointer',':hover':{opacity:'0.5'}}}/>
             </div>
             </TaskContainer>

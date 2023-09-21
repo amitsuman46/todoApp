@@ -3,8 +3,7 @@ import {TaskContainer } from '../../Common/CommonComponents';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import { addTask } from '../../Services/Services';
-import { counter } from './TaskPages';
-const AddTasks = () => {
+const AddTasks = (props) => {
 
   const titleRef = useRef();
   const detailRef = useRef();
@@ -14,8 +13,13 @@ const AddTasks = () => {
     const title = titleRef.current.value;
     const detail = detailRef.current.value;
 
-    addTask(title,detail);
-    counter();
+    console.log(addTask(title,detail,(receivedTasks)=>{
+
+      props.addToTasks(receivedTasks);
+
+      titleRef.current.value = "";
+      detailRef.current.value = "";
+    }));
   } 
 
   return (

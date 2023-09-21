@@ -7,42 +7,39 @@ import AddTasks from './AddTasks';
 import DisplayTask from './DisplayTask';
 import { getTasks } from '../../Services/Services';
 
-let count=0;
-export const counter = () => {
-   count++;
- }
+
 
 const TaskPages = (props) => {
 
   const [tasks, setTasks] = useState([]);
+  const [userName,setUserName] = useState("John Doe");
 
   useEffect(()=>{
      getTasks((data)=>{
       setTasks(data.tasks);
+      setUserName(data.userName);
       console.log(data.tasks);
     });
     
-  },[count]);
+  },[]);
 
-
- 
 
 
   return (
     <>
-        <Navbar userName="John Doe" onLogOut={props.onLogOut} />
-         <Heading name={"John Doe"}/>
+        <Navbar userName={userName} onLogOut={props.onLogOut} />
+         <Heading name={userName}/>
          <TaskContainer>
           <div className={"left"} style={{width:'50%',height:'100%'}}>
             <div className='calendar' style={{width:'100%',height:'57%',padding:"0px",margin:"0px"}}>
               <BasicDateCalendar/>
             </div>
             <div className='addTask' style={{width:'73%',height:'50%',margin:'auto'}}>
-              <AddTasks/>
+              <AddTasks addToTasks={(tasks)=>{setTasks(tasks)}}/>
             </div>
           </div>
           <div className={"right"} style={{width:'50%',height:'100%'}}>
-            <DisplayTask tasks={tasks}/>
+            <DisplayTask onDeleteTask={(tasks)=>{setTasks(tasks)}} tasks={tasks}/>
           </div>
          </TaskContainer>
     </>

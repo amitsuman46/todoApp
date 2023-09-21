@@ -9,7 +9,7 @@ const DisplayTask = (props) => {
             <div style={{color:'white', fontSize:'30px',marginTop:'7px'}}>Tasks To Do</div>
             {props.tasks.map((task)=>{
                 return(
-                    <TaskItem task={{title:task.title.trim(),detail:task.detail.trim()}}/>
+                    <TaskItem onDeleteTask={props.onDeleteTask} id={task._id} task={{title:task.title.trim(),detail:task.detail.trim()}}/>
                 )
             })}
             

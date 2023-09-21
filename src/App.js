@@ -2,7 +2,7 @@ import { useEffect, useReducer, useState } from 'react';
 import './App.css';
 import {MainDIV} from './Common/CommonComponents';
 import Login from './Components/Login/Login';
-import SignUp from './Components/Signup/SignUp';
+import SignUp from './Components/SignUp/SignUp';
 import TaskPages from './Components/TaskPages/TaskPages';
 import { loginUser, signUpUser } from './Services/Services';
 import CircularProgress from '@mui/joy/CircularProgress';
@@ -42,6 +42,8 @@ function App() {
       dispatchAction({type:'USER_LOGGED'});
       setLoading(false);
     }
+    setLoading(false);
+
   },[])
 
   function login(email,password){

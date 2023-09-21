@@ -63,20 +63,24 @@ export const loginUser = (email,password,callback)=>{
 
 };
 
-export const addTask = (title, detail)=>{
+export const addTask = (title, detail,callback)=>{
     fetch("http://localhost:3080/addTask",{
         method:"POST" ,
         body:JSON.stringify({
             title,
             detail
         }), headers: {
-            'content-type': 'application/json' ,
-            'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`//always include this incase of post req to backend to avoid empty req body
+            'content-type': 'application/json' ,//always include this incase of post req to backend to avoid empty req body
+            'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
         }
     }).then(
         (res)=>{
             if(res.status=='201'){
-                console.log('Data Added Successfully');
+                    res.json()
+                    .then((data)=>{
+                       
+                        callback(data.tasks);
+                    })
             }
         }
     ).catch(
@@ -88,7 +92,7 @@ export const getTasks = (callback)=>{
     fetch("http://localhost:3080/userData",{
         method:"GET" ,
          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`//always include this incase of post req to backend to avoid empty req body
+            'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
         }
     }).then(
         (res)=>{
@@ -99,6 +103,30 @@ export const getTasks = (callback)=>{
                     }
                     
                 )
+            }
+        }
+    ).catch(
+        (err)=>{console.log(err);}
+    )
+};
+
+export const deleteTask = (taskId,callback)=>{
+    fetch("http://localhost:3080/deleteTask",{
+        method:"POST" ,
+        body:JSON.stringify({
+            taskId,
+        }), headers: {
+            'content-type': 'application/json' ,
+            'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`//always include this incase of post req to backend to avoid empty req body
+        }
+    }).then(
+        (res)=>{
+            if(res.status=='200'){
+                    res.json()
+                    .then((data)=>{
+                       
+                        callback(data.tasks);
+                    })
             }
         }
     ).catch(
