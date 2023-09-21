@@ -46,13 +46,14 @@ export const loginUser = (email,password,callback)=>{
     ).then((response)=>{
         if(response.status == '200'){
 
-            callback();
+            
             response.json().then(
                 (data)=> {
                     localStorage.setItem('jwtToken',data.token);
+                    callback();
                 }
             )
-            return response.message;
+            
         }
 
     })
